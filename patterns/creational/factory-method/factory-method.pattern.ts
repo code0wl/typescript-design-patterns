@@ -1,5 +1,9 @@
+import { Processor, GraphicsCard } from './components.class';
+
 class GraphicsCardFactory {
 
+    // through decoupling of the class creation
+    // you may change the subclass implementation with a different configuration
     public buildGraphicsCard(): GraphicsCard {
         const graphicsCard = new GraphicsCard();
         const processor = new Processor();
@@ -8,17 +12,7 @@ class GraphicsCardFactory {
     }
 
     private createProcessor(): Processor {
-        return new Processor();
+        return new Processor('some processor');
     }
 
-}
-
-class Processor {
-    constructor(type?) {
-        console.info(`new processor: ${type} created.`)
-    }
-}
-
-class GraphicsCard {
-    public processor: Processor;
 }
